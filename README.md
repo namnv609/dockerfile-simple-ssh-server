@@ -1,2 +1,3 @@
-# dockerfile-simple-ssh-server
-Dockerfile simple OpenSSH server
+# Dockerfile simple OpenSSH server
+
+My simple Dockerfile is used to create simple OpenSSH server
