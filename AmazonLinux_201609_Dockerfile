@@ -1,0 +1,14 @@
+FROM amazonlinux:2016.09
+
+MAINTAINER NamNV609 (namnv609@gmail.com)
+
+RUN yum install -y iputils
+RUN yum install -y initscripts || true
+RUN yum install -y openssh-server openssh-clients
+RUN ssh-keygen -f $HOME/.ssh/id_rsa -t rsa -N ''
+
+COPY AmazonLinux_201609_sshd_config /etc/ssh/sshd_config
+ADD $HOME/.ssh/authorized_keys
+RUN chmod 600 $HOME/.ssh/authorized_keys
+
+ENTRYPOINT service sshd restart && bash
